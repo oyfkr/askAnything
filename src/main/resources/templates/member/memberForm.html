@@ -4,19 +4,32 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+<style>
+    .fieldError{
+        color : red;
+    }
+</style>
+
 <body>
 <form action="/members/new" method="post" th:object="${memberFormDto}">
     <div>
         <label th:for="name">이름</label>
         <input type="text" th:field="*{name}" placeholder="이름을 입력하세요">
+        <p th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}" class="fieldError">Incorrect data</p>
     </div>
     <div>
         <label th:for="email">이메일</label>
-        <input type="text" th:field="*{email}" placeholder="이메일을 입력하세요">
+        <input type="email" th:field="*{email}" placeholder="이메일을 입력하세요">
+        <p th:if="${#fields.hasErrors('email')}"
+           th:errors="*{email}" class="fieldError">Incorrect data</p>
     </div>
     <div>
         <label th:for="password">비밀번호</label>
-        <input type="text" th:field="*{password}" placeholder="비밀번호를 입력하세요">
+        <input type="password" th:field="*{password}" placeholder="비밀번호를 입력하세요">
+        <p th:if="${#fields.hasErrors('password')}"
+           th:errors="*{password}" class="fieldError">Incorrect data</p>
     </div>
     <button type="submit">제출하기</button>
 </form>
