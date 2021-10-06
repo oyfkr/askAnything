@@ -35,7 +35,7 @@ public class Member {
         member.setName(memberFormDto.getName());
         member.setEmail(memberFormDto.getEmail());
         member.setPassword(enPassword);
-        member.setRole(Role.USER);
+        member.setRole(Role.ADMIN);
 
         return member;
     }

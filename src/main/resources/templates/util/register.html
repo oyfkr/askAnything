@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<script th:inline="javascript">
+    $(document).ready(function (){
+        let errorMessage =[[${errorMessage}]];
+        if(errorMessage != null){
+            alert(errorMessage);
+        }
+    })
+</script>
+
+
+<style>
+    .fieldError{
+        color : red;
+    }
+</style>
+
+<body>
+<form action="/util/register" method="post" th:object="${registerDto}">
+    <div>
+        <label th:for="phoneNum">전화번호</label>
+        <input type="text" th:field="*{phoneNum}" placeholder="전화번호를 입력하세요">
+        <p th:if="${#fields.hasErrors('phoneNum')}"
+           th:errors="*{phoneNum}" class="fieldError">Incorrect data</p>
+    </div>
+    <div>
+        <label th:for="ability">할 수 있는 일</label>
+        <input type="text" th:field="*{ability}" placeholder="할 수 있는 일을 입력하세요">
+        <p th:if="${#fields.hasErrors('ability')}"
+           th:errors="*{ability}" class="fieldError">Incorrect data</p>
+    </div>
+    <div>
+        <label th:for="address">주소</label>
+        <input type="text" th:field="*{address}" placeholder="주소를 입력하세요">
+        <p th:if="${#fields.hasErrors('address')}"
+           th:errors="*{address}" class="fieldError">Incorrect data</p>
+    </div>
+    <button type="submit">제출하기</button>
+</form>
+
+</body>
+</html>

@@ -10,6 +10,8 @@
 <a href="members/login" sec:authorize="isAnonymous()">로그인</a>
 <a href="members/new" sec:authorize="isAnonymous()">회원가입</a>
 <a href="members/logout" sec:authorize="isAuthenticated()">로그아웃</a>
+<a href="util/find" sec:authorize = "hasRole('USER')">찾아보기</a>
+<a href="util/register" sec:authorize = "hasRole('ADMIN')">등록하기</a>
 <!--<p th:text="${name}"></p>-->
 </body>
 </html>
