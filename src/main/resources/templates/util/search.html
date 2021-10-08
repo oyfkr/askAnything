@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<h2> 검색 결과 </h2>
+
+<table border="1">
+<thead>
+<tr>
+    <td>순번</td>
+    <td>능력</td>
+    <td>주소</td>
+    <td>핸드폰</td>
+    <td>이름</td>
+</tr>
+</thead>
+
+<tbody>
+<tr th:each="search, status:${findSearch}">
+    <td th:text="${status.index}"></td>
+    <td th:text="${search.ability}"></td>
+    <td th:text="${search.address}"></td>
+    <td th:text="${search.phoneNum}"></td>
+    <td th:text="${search.member.getName()}"></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

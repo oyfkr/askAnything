@@ -23,8 +23,8 @@ public class RegisterService {
     }
 
     public void duplicateCheck(Register register){
-        Register findRegister = registerRepository.findByMemberId(register.getMember().getId());
-        System.out.println(findRegister);
+        //Register findRegister = registerRepository.findByMemberId(register.getMember().getId());
+        Register findRegister = registerRepository.findByMember(register.getMember());
 
         if(findRegister != null){
             throw new IllegalStateException("이미 등록하셨습니다.");

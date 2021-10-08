@@ -15,8 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,9 +30,23 @@ public class UtilController {
     private final RegisterRepository registerRepository;
 
     @GetMapping("/util/find")
-    public String find(){
+    public String findForm(Model model){
+        List<Register> findAll = registerRepository.findAll();
+        model.addAttribute("findRegister",findAll);
+        String search="";
+        model.addAttribute("search", search);
         return "util/find";
     }
+
+    @PostMapping("/util/find")
+    public String find(@RequestParam String search, Model model){
+        System.out.println(search);
+        List<Register> findSearch = registerRepository.findByAbilityContaining(search);
+        model.addAttribute("findSearch", findSearch);
+        return "util/search";
+    }
+
+
 
     @GetMapping("/util/register")
     public String registerForm(Model model){
